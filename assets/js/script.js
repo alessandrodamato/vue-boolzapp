@@ -209,6 +209,10 @@ createApp({
       }, 1000);
     },
 
+    deleteMsg(contactI, msgIndex){
+      this.contacts[contactI].messages.splice(msgIndex, 1);
+    },
+
     getBotRandomResponse(){
       const n = Math.floor(Math.random() * this.botMsg.length);
       return response = this.botMsg[n];
@@ -229,10 +233,6 @@ createApp({
       return this.contacts
     }
     
-  },
-
-  computed:{
-
   },
 
   mounted(){
