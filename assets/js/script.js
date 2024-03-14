@@ -166,13 +166,52 @@ createApp({
             }
           ],
         }
-     ],
-     contactIndex: 0 
+      ],
+      contactIndex: 0,
+      tempMsg: '',
+      botMsg: [
+        'OK!',
+        'Assolutamente no',
+        'Mi dispiace :(',
+        'Ti voglio bene!',
+        'Ma vai a quel paese!',
+        'Ciao!',
+        'Vuoi giocare a calcio con me?'
+      ],
     }
   },
 
   methods:{
-    
+
+    sendMsg(){
+      if (this.tempMsg !== ''){
+        const newMsg = {
+          date: 'x',
+          message: this.tempMsg,
+          status: 'sent'
+        };
+        this.contacts[this.contactIndex].messages.push(newMsg);
+        this.tempMsg = '';
+        this.receiveMsg();
+      }
+    },
+
+    receiveMsg(){
+      setTimeout(() => {
+          const newMsg = {
+            date: 'x',
+            message: this.getBotRandomResponse(),
+            status: 'received'
+          };
+          this.contacts[this.contactIndex].messages.push(newMsg);
+      }, 1000);
+    },
+
+    getBotRandomResponse(){
+      const n = Math.floor(Math.random() * this.botMsg.length);
+      return response = this.botMsg[n];
+    }
+
   },
 
   mounted(){

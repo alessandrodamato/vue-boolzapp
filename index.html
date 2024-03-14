@@ -156,7 +156,11 @@
       <!-- barra digitazione -->
       <div class="message d-flex">
         <div class="emoji d-flex"><i class="fa-regular fa-face-smile"></i></div>
-        <input type="text" placeholder="Scrivi un messaggio">
+        <input
+          v-model.trim="tempMsg"
+          @keyup.enter="sendMsg()"
+          type="text"
+          placeholder="Scrivi un messaggio">
         <div class="rec d-flex"><i class="fa-solid fa-microphone"></i></div>
       </div>
       <!-- barra digitazione -->
