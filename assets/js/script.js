@@ -167,6 +167,7 @@ createApp({
           ],
         }
       ],
+      darkmode: false,
       contactIndex: 0,
       tempMsg: '',
       botMsg: [
@@ -211,15 +212,28 @@ createApp({
     getBotRandomResponse(){
       const n = Math.floor(Math.random() * this.botMsg.length);
       return response = this.botMsg[n];
-    }
+    },
 
+    toggleDarkMode(){
+      document.body.classList.toggle('darkmode');
+    },
+
+    contactFilters(){
+      const filtered = this.contacts.filter(contact => {
+        if (!contact.name.toLowerCase().includes(this.contactToSearch.toLowerCase())) {
+          contact.visible = false
+        }
+      });
+      return filtered
+    }
+    
   },
 
   computed:{
 
-    contactFilter(){
-      return this.contacts.filter((contact, index) => contact.name.toLowerCase().includes(this.contactToSearch.toLowerCase()));
-    }
+    pippo(){
+      return this.contacts.filter(this.contactFilters)
+    },
 
   },
 

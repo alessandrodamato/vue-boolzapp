@@ -20,7 +20,7 @@
 
   <title>Boolzapp</title>
 </head>
-<body class="">
+<body>
   
   <div id="app" class="main-wrapper d-flex container">
 
@@ -36,7 +36,7 @@
 
         <div class="col d-flex">
           <div class="topbar-menu">
-            <i class="fa-solid fa-moon" id="theme-button"></i>
+            <i class="fa-solid fa-moon" @click="toggleDarkMode()"></i>
             <i class="fa-solid fa-circle-notch"></i>
             <i class="fa-solid fa-message"></i>
             <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -79,9 +79,10 @@
       <div class="contacts">
         
         <div
-          v-for="(contact, index) in contactFilter"
+          v-for="(contact, index) in pippo"
           @click="contactIndex = index"
           class="contact"
+          :class="{'d-none' : contact.visible === false}"
           >
           <div class="col d-flex">
             <div class="avatar"><img :src="contact.avatar" :alt="contact.name" :title="contact.name"></div>

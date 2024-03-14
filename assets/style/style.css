@@ -63,6 +63,10 @@ ul{
   display: flex;
 }
 
+.d-none{
+  display: none;
+}
+
 .debug{
   border: 1px solid black;
 }
@@ -446,7 +450,7 @@ body.darkmode .main-wrapper .col-left .contacts .contact:hover{
 }
 
 body.darkmode .main-wrapper .col-right .chat{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.7)), url(../img/mine.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.7)), url(../../img/mine.jpg);
 }
 
 body.darkmode .main-wrapper .col-right .chat .row.sent .text-message{
