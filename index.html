@@ -88,9 +88,9 @@
             <div class="avatar"><img :src="contact.avatar" :alt="contact.name" :title="contact.name"></div>
             <div class="name-mex d-flex">
               <span class="name">{{contact.name}}</span>
-              <span class="mex">Lorem ipsum dolor sit amet</span>
+              <span class="mex">{{contact.messages[contact.messages.length - 1].message}}</span>
             </div>
-            <div class="hour">16:26</div>
+            <div class="hour">{{contact.messages[contact.messages.length - 1].date}}</div>
           </div>
         </div>
         
@@ -116,7 +116,7 @@
           </div>
           <div class="name-info d-flex">
             <span class="name">{{contacts[contactIndex].name}}</span>
-            <span class="info">Ultimo accesso oggi alle 16:26</span>
+            <span class="info">Ultimo messaggio il {{contacts[contactIndex].messages[contacts[contactIndex].messages.length - 1].date}}</span>
           </div>
         </div>
         
@@ -149,7 +149,7 @@
                   <li @click="deleteMsg(contactIndex, index)">Cancella messaggio</li>
                 </ul>
               </div>
-              <div class="d-flex">16:13</div>
+              <div class="d-flex">{{messageObj.date}}</div>
             </div>
           </div>
         </div>

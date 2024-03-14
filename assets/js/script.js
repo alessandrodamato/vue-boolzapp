@@ -188,7 +188,7 @@ createApp({
     sendMsg(){
       if (this.tempMsg !== ''){
         const newMsg = {
-          date: 'x',
+          date: this.getNewDate(),
           message: this.tempMsg,
           status: 'sent'
         };
@@ -201,7 +201,7 @@ createApp({
     receiveMsg(){
       setTimeout(() => {
           const newMsg = {
-            date: 'x',
+            date: this.getNewDate(),
             message: this.getBotRandomResponse(),
             status: 'received'
           };
@@ -223,7 +223,7 @@ createApp({
     },
 
     contactFilters(){
-      const filtered = this.contacts.forEach(contact => {
+        this.contacts.forEach(contact => {
         if (!contact.name.toLowerCase().includes(this.contactToSearch.toLowerCase())) {
           contact.visible = false
         } else{
@@ -231,7 +231,18 @@ createApp({
         }
       });
       return this.contacts
-    }
+    },
+
+    getNewDate(){
+      const d = new Date()
+      const day = d.getDate() < 10 ? '0' + d.getDate() : d.getDate()
+      const month = d.getMonth() < 10 ? '0' + parseInt(+ d.getMonth() + 1 ) : parseInt(d.getMonth()) + 1
+      const year = d.getFullYear()
+      const h = d.getHours() < 10 ? '0' + d.getHours() : d.getHours()
+      const m = d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes()
+      const s = d.getSeconds() < 10 ? '0' + d.getSeconds() : d.getSeconds()
+      return `${day}/${month}/${year} ${h}:${m}:${s}`
+    },
     
   },
 
