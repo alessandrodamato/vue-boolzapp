@@ -1,0 +1,549 @@
+:root{
+  /* default palette */
+
+  --background1:#009688;
+  --background2:#dadbd4;
+  --mexsent:#d5f9ba;
+  --lightblue:#8edafc;
+  --grey:#b1b1b1;
+  --info:#6b7376;
+  --topbar:#eaeaea;
+  --message:#f3eeea;
+  --searchbar:#fafafa;
+  --border:#f5f5f5;
+  --divider:#d6d6d6;
+  
+  /* dark theme palette */
+
+  --dbackground1:#005c4bff;
+  --dbackground2:#4e4d54ff;
+  --dmain:#2b2b2bff;
+  --dinfo:#b5b5b5ff;
+  --dnotificaions:#1dab62ff;
+  --dsearchbar:#383838ff;
+  --dsentoptions:#6fa399ff;
+}
+
+/* reset */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Lato', sans-serif;
+  background: linear-gradient(
+    to bottom,
+    var(--background1)0%,
+    var(--background1)15%,
+    var(--background2)15%,
+    var(--background2)100%
+  );
+}
+
+img{
+  width: 100%;
+}
+
+ul{
+  list-style: none;
+}
+
+/* utilities */
+
+.container{
+  width: 80%;
+  height: 95vh;
+  margin: 2.5vh auto;
+}
+
+.d-flex{
+  display: flex;
+}
+
+.debug{
+  border: 1px solid black;
+}
+
+.b-r-grey{
+  border-right: 1px solid var(--divider);
+}
+
+/* main-wrapper */
+
+.main-wrapper{
+  background-color: white;
+}
+
+.main-wrapper .col-left{
+  min-width: 360px;
+  width: 30%;
+  height: 100%;
+}
+
+.main-wrapper .topbar{
+  height: 70px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--topbar);
+}
+
+.main-wrapper .topbar i{
+  padding: 0 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--grey);
+}
+
+.main-wrapper .topbar .col{
+  width: 50%;
+}
+
+.main-wrapper .topbar .col .avatar,
+.main-wrapper .notifications .col .not-symbol,
+.main-wrapper .contacts .contact .col .avatar{
+  width: 50px;
+  height: 50px;
+  margin-left: 15px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.main-wrapper .topbar .col:last-child{
+  justify-content: flex-end;
+}
+
+.main-wrapper .topbar .col .topbar-menu{
+  margin-right: 15px;
+}
+
+.main-wrapper .col-left .notifications{
+  height: 80px;
+  align-items: center;
+  background-color: var(--lightblue);
+}
+
+.main-wrapper .notifications .col .not-symbol{
+  line-height: 50px;
+  font-size: 1.3rem;
+  text-align: center;
+  background-color: white;
+  color: var(--lightblue);
+}
+
+.main-wrapper .notifications .col .not-info span:last-child{
+  width: fit-content;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.main-wrapper .col-left .searchbar{
+  height: 50px;
+  padding: 7px;
+  background-color: var(--searchbar);
+}
+
+.main-wrapper .col-left .searchbar > div{
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--border);
+  background-color: white;
+}
+
+.main-wrapper .col-left .searchbar > div > div{
+  width: 70px;
+  text-align: center;
+  cursor: pointer;
+  color: var(--grey);
+}
+
+.main-wrapper .col-left .searchbar input[type="search"]{
+  width: 100%;
+  height: 100%;
+  font-size: .9rem;
+  border: none;
+}
+
+.main-wrapper .col-left .searchbar input[type="search"]:focus,
+.main-wrapper .col-right .message input[type="text"]:focus{
+  outline: none;
+}
+
+.main-wrapper .col-left .searchbar input[type="search"]::placeholder,
+.main-wrapper .col-right .message input[type="text"]::placeholder{
+  color: var(--grey);
+}
+
+.main-wrapper .col-left .contacts{
+  height: calc(100% - 70px - 80px - 50px);
+  overflow-y: scroll;
+}
+
+.main-wrapper .col-left .contacts .contact{
+  width: 100%;
+  height: 80px;
+  border-bottom: 1px solid var(--border);
+}
+
+.main-wrapper .col-left .contacts .contact:hover{
+  cursor: pointer;
+  background-color: hsla(0, 0%, 95%, .8);
+}
+
+.main-wrapper .col-left .contacts .contact .col{
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  position: relative;
+}
+
+.main-wrapper .col-left .contacts .contact .col .name{
+  font-size: 1.1rem;
+}
+
+.main-wrapper .col-left .contacts .contact .col .mex{
+  font-size: .9rem;
+  color: var(--grey);
+}
+
+.main-wrapper .col-left .contacts .contact .col .hour{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: .8rem;
+  color: var(--grey);
+}
+
+.main-wrapper .col-right{
+  width: 70%;
+  height: 100%;
+}
+
+.main-wrapper .col-right .topbar .col:first-child{
+  width: 70%;
+}
+
+.main-wrapper .col-right .topbar .col .name-info,
+.main-wrapper .notifications .col .not-info,
+.main-wrapper .contacts .contact .col .name-mex{
+  flex-direction: column;
+  justify-content: center;
+  line-height: 22px;
+  margin-left: 15px;
+}
+
+.main-wrapper .col-right .topbar .col .name-info .info,
+.main-wrapper .notifications .col .not-info span:last-child{
+  font-size: .8rem;
+  font-weight: bold;
+  color: var(--info);
+}
+
+.main-wrapper .col-right .chat{
+  height: calc(100% - 70px - 70px);
+  padding: 50px 0;
+  overflow-y: scroll;
+  background-image: url(../img/mine.jpg);
+}
+
+.main-wrapper .col-right .chat .row{
+  width: 100%;
+  padding: 0 90px;
+}
+
+.main-wrapper .col-right .chat .row.sent{
+  justify-content: flex-end;
+}
+
+.main-wrapper .col-right .chat .row.sent .text-message{
+  background-color: var(--mexsent);
+}
+
+.main-wrapper .col-right .chat .row .text-message{
+  max-width: 60%;
+  margin: 5px 0;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.main-wrapper .col-right .chat .row .text-message p{
+  padding-right: 10px;
+}
+
+.main-wrapper .col-right .chat .row .text-message .message-options{
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  color: var(--grey);
+}
+
+.main-wrapper .col-right .chat .row .text-message .message-options div{
+  width: 100%;
+  height: 50%;
+  text-align: center;
+}
+
+.main-wrapper .col-right .chat .row .text-message .message-options .arrow:hover{
+  cursor: pointer;
+}
+
+.main-wrapper .col-right .chat .row .text-message .message-options .arrow:hover .drop-down-menu{
+  display: inline-block;
+}
+
+.main-wrapper .col-right .chat .row .text-message .message-options .drop-down-menu{
+  display: none;
+  width: 170px;
+  padding: 10px;
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  z-index: 1;
+  text-align: center;
+  box-shadow: 0 0 15px var(--info);
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.main-wrapper .col-right .chat .row .text-message .message-options .drop-down-menu li{
+  padding: 5px;
+  font-size: .9rem;
+  cursor: pointer;
+  color: black;
+}
+
+.main-wrapper .col-right .chat .row .text-message .message-options .drop-down-menu li:hover{
+  text-decoration: underline;
+}
+
+.main-wrapper .col-right .chat .row .text-message .message-options div:last-child{
+  font-size: .7rem;
+  align-items: flex-end;
+}
+
+.main-wrapper .col-right .message{
+  height: 70px;
+  padding: 10px 0;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--message);
+}
+
+.main-wrapper .col-right .message .emoji,
+.main-wrapper .col-right .message .rec{
+  width: 100px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: var(--info);
+}
+
+.main-wrapper .col-right .message i:hover{
+  cursor: pointer;
+}
+
+.main-wrapper .col-right .message input[type="text"]{
+  width: 100%;
+  height: 100%;
+  padding: 0 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: .9rem;
+}
+
+/* ############ dark theme ############ */
+
+body.darkmode{
+  background: linear-gradient(
+    to bottom,
+    var(--dbackground1)0%,
+    var(--dbackground1)15%,
+    var(--dbackground2)15%,
+    var(--dbackground2)100%
+  );
+}
+
+body.darkmode ::-webkit-scrollbar {
+  width: 1em;
+}
+ 
+body.darkmode ::-webkit-scrollbar-track {
+  background-color: var(--dmain);
+}
+ 
+body.darkmode ::-webkit-scrollbar-thumb {
+  background-color: var(--dbackground1);
+  border: 1px solid black;
+}
+
+body.darkmode .b-r-grey{
+  border-right: 1px solid black;
+}
+
+body.darkmode .main-wrapper{
+  background-color: var(--dmain);
+}
+
+body.darkmode .main-wrapper .topbar{
+  background-color: var(--dmain);
+}
+
+body.darkmode .main-wrapper .topbar,
+body.darkmode .main-wrapper .topbar i{
+  color: white;
+}
+
+body.darkmode .main-wrapper .col-right .topbar .col .name-info .info{
+  color: var(--dinfo);
+}
+
+body.darkmode .main-wrapper .col-left .notifications{
+  background-color: var(--dnotificaions);
+  color: white;
+}
+
+body.darkmode .main-wrapper .notifications .col .not-symbol{
+  color: var(--dnotificaions);
+}
+
+body.darkmode .main-wrapper .notifications .col .not-info span:last-child{
+  color: white;
+}
+
+body.darkmode .main-wrapper .col-left .searchbar{
+  background-color: var(--dmain);
+}
+
+body.darkmode .main-wrapper .col-left .searchbar > div,
+body.darkmode .main-wrapper .col-left .searchbar input[type="search"]{
+  border: none;
+  background-color: var(--dsearchbar);
+  color: white;
+}
+
+body.darkmode .main-wrapper .col-left .searchbar > div{
+  border-bottom: 1px solid var(--dinfo);
+}
+
+body.darkmode .main-wrapper .col-left .searchbar > div > div,
+body.darkmode .main-wrapper .col-left .contacts .contact{
+  color: white;
+}
+
+body.darkmode .main-wrapper .col-left .contacts .contact{
+  border-bottom: none;
+}
+
+body.darkmode .main-wrapper .col-left .contacts .contact:hover{
+  background-color: hsla(0, 0%, 30%, .8);
+}
+
+body.darkmode .main-wrapper .col-right .chat{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.7)), url(../img/mine.jpg);
+}
+
+body.darkmode .main-wrapper .col-right .chat .row.sent .text-message{
+  background-color: var(--dbackground1);
+}
+
+body.darkmode .main-wrapper .col-right .chat .row .text-message{
+  background-color: var(--dsearchbar);
+  color: white;
+}
+
+body.darkmode .main-wrapper .col-right .chat .row.sent .text-message .message-options{
+  color: var(--dsentoptions);
+}
+
+body.darkmode .main-wrapper .col-right .chat .row .text-message .message-options .drop-down-menu{
+  box-shadow: 0 0 7px white;
+  background-color: var(--dmain);
+}
+
+body.darkmode .main-wrapper .col-right .chat .row .text-message .message-options .drop-down-menu li,
+body.darkmode .main-wrapper .col-right .message .emoji,
+body.darkmode .main-wrapper .col-right .message .rec{
+  color: white;
+}
+
+body.darkmode .main-wrapper .col-right .message,
+body.darkmode .main-wrapper .col-right .message input[type="text"]{
+  background-color: var(--dmain);
+  color: white;
+}
+
+/* ############ media queries ############ */
+
+/* tablet */
+
+@media screen and (max-width:992px){
+  .container{
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .main-wrapper .col-left{
+    min-width: 100px;
+    width: fit-content;
+  }
+
+  .main-wrapper .col-left .topbar .col:first-child{
+    width: 100%;
+  }
+
+  .main-wrapper .col-left .contacts{
+    height: calc(100% - 70px);
+  }
+
+  .main-wrapper .col-right{
+    width: 100%;
+  }
+
+  .main-wrapper .col-left .contacts .contact .col .name,
+  .main-wrapper .col-left .contacts .contact .col .mex,
+  .main-wrapper .col-left .contacts .contact .col .hour,
+  .main-wrapper .col-left .topbar .col.d-flex,
+  .main-wrapper .col-left .searchbar,
+  .main-wrapper .notifications{
+    display: none;
+  }
+
+  .main-wrapper .col-right .chat .row{
+    padding: 0 40px;
+  }
+}
+
+/* mobile */
+
+@media screen and (max-width:542px){
+  .main-wrapper .col-left,
+  .main-wrapper .col-right .topbar .col:last-child,
+  .main-wrapper .col-right .message .emoji,
+  .main-wrapper .col-right .message .rec{
+    display: none;
+  }
+
+  .main-wrapper .col-right .topbar .col:first-child{
+    width: 100%;
+  }
+
+  .main-wrapper .col-right .chat .row{
+    padding: 0 25px;
+  }
+
+  .main-wrapper .col-right .chat .row .text-message{
+    max-width: 80%;
+  }
+
+  .main-wrapper .col-right .message input[type="text"]{
+    margin: 0 20px;
+  }
+}
