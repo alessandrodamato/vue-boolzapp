@@ -67,7 +67,10 @@
       <div class="searchbar">
         <div class="d-flex">
           <div><i class="fa-solid fa-magnifying-glass"></i></div>
-          <input type="search" placeholder="Cerca o inizia una nuova chat">
+          <input
+            v-model="contactToSearch"
+            type="search"
+            placeholder="Cerca o inizia una nuova chat">
         </div>
       </div>
       <!-- /cerca contatti -->
@@ -76,7 +79,7 @@
       <div class="contacts">
         
         <div
-          v-for="(contact, index) in contacts"
+          v-for="(contact, index) in contactFilter"
           @click="contactIndex = index"
           class="contact"
           >

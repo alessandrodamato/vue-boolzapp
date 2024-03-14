@@ -178,6 +178,7 @@ createApp({
         'Ciao!',
         'Vuoi giocare a calcio con me?'
       ],
+      contactToSearch: ''
     }
   },
 
@@ -210,6 +211,14 @@ createApp({
     getBotRandomResponse(){
       const n = Math.floor(Math.random() * this.botMsg.length);
       return response = this.botMsg[n];
+    }
+
+  },
+
+  computed:{
+
+    contactFilter(){
+      return this.contacts.filter((contact, index) => contact.name.toLowerCase().includes(this.contactToSearch.toLowerCase()));
     }
 
   },
