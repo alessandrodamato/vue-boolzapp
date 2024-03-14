@@ -166,12 +166,13 @@ createApp({
             }
           ],
         }
-     ], 
+     ],
+     contactIndex: 0 
     }
   },
 
   methods:{
-
+    
   },
 
   mounted(){

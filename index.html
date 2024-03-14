@@ -24,8 +24,10 @@
   
   <div id="app" class="main-wrapper d-flex container">
 
+    <!-- colonna di sinistra -->
     <div class="col-left b-r-grey">
 
+      <!-- barra superiore sinistra -->
       <div class="topbar d-flex">
         
         <div class="col">
@@ -42,7 +44,9 @@
         </div>
 
       </div>
+      <!-- /barra superiore sinistra -->
 
+      <!-- disclaimer notifiche -->
       <div class="notifications d-flex">
 
         <div class="col">
@@ -57,18 +61,25 @@
         </div>
         
       </div>
+      <!-- /disclaimer notifiche -->
 
+      <!-- cerca contatti -->
       <div class="searchbar">
         <div class="d-flex">
           <div><i class="fa-solid fa-magnifying-glass"></i></div>
           <input type="search" placeholder="Cerca o inizia una nuova chat">
         </div>
       </div>
+      <!-- /cerca contatti -->
 
       <!-- contatti -->
       <div class="contacts">
         
-        <div v-for="(contact, index) in contacts" class="contact">
+        <div
+          v-for="(contact, index) in contacts"
+          @click="contactIndex = index"
+          class="contact"
+          >
           <div class="col d-flex">
             <div class="avatar"><img :src="contact.avatar" :alt="contact.name" :title="contact.name"></div>
             <div class="name-mex d-flex">
@@ -83,15 +94,24 @@
       <!-- /contatti -->
 
     </div>
+    <!-- /colonna di sinistra -->
 
+    <!-- colonna di destra -->
     <div class="col-right">
 
+      <!-- barra superiore destra -->
       <div class="topbar d-flex">
 
         <div class="col d-flex">
-          <div class="avatar"><img src="./img/avatar_1.jpg" alt="Michele" title="Michele"></div>
+          <div class="avatar">
+            <img
+            :src="contacts[contactIndex].avatar"
+            :alt="contacts[contactIndex].name"
+            :title="contacts[contactIndex].name"
+            >
+          </div>
           <div class="name-info d-flex">
-            <span class="name">Michele</span>
+            <span class="name">{{contacts[contactIndex].name}}</span>
             <span class="info">Ultimo accesso oggi alle 16:26</span>
           </div>
         </div>
@@ -105,14 +125,20 @@
         </div>
 
       </div>
+      <!-- /barra superiore destra -->
 
+      <!-- chat -->
       <div class="chat">
         
-        <div class="row sent d-flex">
-          <div class="text-message d-flex">
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis voluptate cupiditate minima, quaerat nihil modi repellendus voluptas sapiente pariatur accusamus, exercitationem animi voluptatibus laborum adipisci! Dolorum vero laboriosam libero quasi.</p>
-            <div class="message-options">
-              <div class="arrow">
+        <div
+        v-for="(messageObj, index) in contacts[contactIndex].messages"
+        class="row d-flex"
+        :class="messageObj.status === 'sent' ? 'sent' : ''"
+        >
+        <div class="text-message d-flex">
+          <p>{{messageObj.message}}</p>
+          <div class="message-options">
+            <div class="arrow">
                 <i class="fa-solid fa-chevron-down"></i>
                 <ul class="drop-down-menu">
                   <li>Info messaggio</li>
@@ -124,31 +150,19 @@
           </div>
         </div>
         
-        <div class="row d-flex">
-          <div class="text-message d-flex">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente et quisquam quidem dolores temporibus nostrum quae vitae nesciunt itaque nam nobis odio, suscipit exercitationem error dolore rerum facilis eveniet blanditiis ad?</p>
-            <div class="message-options">
-              <div class="arrow">
-                <i class="fa-solid fa-chevron-down"></i>
-                <ul class="drop-down-menu">
-                  <li>Info messaggio</li>
-                  <li>Cancella messaggio</li>
-                </ul>
-              </div>
-              <div class="d-flex">16:15</div>
-            </div>
-          </div>
-        </div>
-
       </div>
+      <!-- /chat -->
 
+      <!-- barra digitazione -->
       <div class="message d-flex">
         <div class="emoji d-flex"><i class="fa-regular fa-face-smile"></i></div>
         <input type="text" placeholder="Scrivi un messaggio">
         <div class="rec d-flex"><i class="fa-solid fa-microphone"></i></div>
       </div>
+      <!-- barra digitazione -->
 
     </div>
+    <!-- /colonna di destra -->
 
   </div>
 
