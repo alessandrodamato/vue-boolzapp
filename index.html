@@ -79,7 +79,7 @@
       <div class="contacts">
         
         <div
-          v-for="(contact, index) in pippo"
+          v-for="(contact, index) in contactFilters()"
           @click="contactIndex = index"
           class="contact"
           :class="{'d-none' : contact.visible === false}"

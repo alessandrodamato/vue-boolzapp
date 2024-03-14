@@ -219,21 +219,19 @@ createApp({
     },
 
     contactFilters(){
-      const filtered = this.contacts.filter(contact => {
+      const filtered = this.contacts.forEach(contact => {
         if (!contact.name.toLowerCase().includes(this.contactToSearch.toLowerCase())) {
           contact.visible = false
+        } else{
+          contact.visible = true
         }
       });
-      return filtered
+      return this.contacts
     }
     
   },
 
   computed:{
-
-    pippo(){
-      return this.contacts.filter(this.contactFilters)
-    },
 
   },
 
