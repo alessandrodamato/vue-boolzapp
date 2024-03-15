@@ -263,4 +263,3 @@ createApp({
 }).mount('#app')
 
 // tendina al click - all'hover compare solo la chevron
-// fix elimina messaggio

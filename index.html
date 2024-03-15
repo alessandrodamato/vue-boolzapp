@@ -116,7 +116,7 @@
           </div>
           <div class="name-info d-flex">
             <span class="name">{{contacts[contactIndex].name}}</span>
-            <span class="info">Ultimo messaggio il {{messageCheckEmpty(contacts[contactIndex].messages).date}}</span>
+            <span v-if="messageCheckEmpty(contacts[contactIndex].messages).date" class="info">Ultimo messaggio il {{messageCheckEmpty(contacts[contactIndex].messages).date}}</span>
           </div>
         </div>
         
