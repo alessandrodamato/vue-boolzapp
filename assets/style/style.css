@@ -67,6 +67,10 @@ ul{
   display: none;
 }
 
+.d-block{
+  display: block;
+}
+
 .debug{
   border: 1px solid black;
 }
@@ -292,16 +296,11 @@ ul{
   text-align: center;
 }
 
-.main-wrapper .col-right .chat .row .text-message .message-options .arrow:hover{
+.main-wrapper .col-right .chat .row .text-message .message-options .arrow{
   cursor: pointer;
 }
 
-.main-wrapper .col-right .chat .row .text-message .message-options .arrow:hover .drop-down-menu{
-  display: inline-block;
-}
-
 .main-wrapper .col-right .chat .row .text-message .message-options .drop-down-menu{
-  display: none;
   width: 170px;
   padding: 10px;
   position: absolute;

@@ -179,7 +179,10 @@ createApp({
         'Ciao!',
         'Vuoi giocare a calcio con me?'
       ],
-      contactToSearch: ''
+      contactToSearch: '',
+      chevronState: false,
+      chevronActive: false,
+      ddmState: false
     }
   },
 
@@ -252,6 +255,27 @@ createApp({
       } else {
         return arr[arr.length - 1]
       }
+    },
+
+    openChevron(messageObj){
+      messageObj.chevronState = true
+      console.log(messageObj);
+    },
+
+    closeChevron(messageObj){
+      if (!this.chevronActive) {
+        messageObj.chevronState = false
+        console.log(messageObj);
+      }
+    },
+
+    blockChevronDDM(messageObj){
+      this.chevronActive = !this.chevronActive
+      messageObj.ddmState = this.chevronActive
+    },
+
+    resetChevronData(){
+      
     }
     
   },
@@ -261,5 +285,3 @@ createApp({
   }
 
 }).mount('#app')
-
-// tendina al click - all'hover compare solo la chevron
