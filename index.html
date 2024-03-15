@@ -88,9 +88,9 @@
             <div class="avatar"><img :src="contact.avatar" :alt="contact.name" :title="contact.name"></div>
             <div class="name-mex d-flex">
               <span class="name">{{contact.name}}</span>
-              <span class="mex">{{contact.messages[contact.messages.length - 1].message}}</span>
+              <span class="mex">{{messageCheckEmpty(contact.messages).message}}</span>
             </div>
-            <div class="hour">{{contact.messages[contact.messages.length - 1].date}}</div>
+            <div class="hour">{{messageCheckEmpty(contact.messages).date}}</div>
           </div>
         </div>
         
@@ -116,7 +116,7 @@
           </div>
           <div class="name-info d-flex">
             <span class="name">{{contacts[contactIndex].name}}</span>
-            <span class="info">Ultimo messaggio il {{contacts[contactIndex].messages[contacts[contactIndex].messages.length - 1].date}}</span>
+            <span class="info">Ultimo messaggio il {{messageCheckEmpty(contacts[contactIndex].messages).date}}</span>
           </div>
         </div>
         
@@ -135,9 +135,9 @@
       <div class="chat">
         
         <div
+        :class="messageObj.status === 'sent' ? 'sent' : ''"
         v-for="(messageObj, index) in contacts[contactIndex].messages"
         class="row d-flex"
-        :class="messageObj.status === 'sent' ? 'sent' : ''"
         >
         <div class="text-message d-flex">
           <p>{{messageObj.message}}</p>

@@ -210,7 +210,9 @@ createApp({
     },
 
     deleteMsg(contactI, msgIndex){
-      this.contacts[contactI].messages.splice(msgIndex, 1);
+      // if (this.contacts[contactI].messages.length > 1) {
+        this.contacts[contactI].messages.splice(msgIndex, 1);
+      // }
     },
 
     getBotRandomResponse(){
@@ -243,6 +245,14 @@ createApp({
       const s = d.getSeconds() < 10 ? '0' + d.getSeconds() : d.getSeconds()
       return `${day}/${month}/${year} ${h}:${m}:${s}`
     },
+
+    messageCheckEmpty(arr){
+      if (arr.length < 1) {
+        return ''
+      } else {
+        return arr[arr.length - 1]
+      }
+    }
     
   },
 
@@ -251,3 +261,6 @@ createApp({
   }
 
 }).mount('#app')
+
+// tendina al click - all'hover compare solo la chevron
+// fix elimina messaggio
