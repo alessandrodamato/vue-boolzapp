@@ -145,16 +145,16 @@
             <div class="message-options">
               <div
                 class="arrow"
-                @mouseenter="openChevron(messageObj)"
-                @mouseleave="closeChevron(messageObj)"
-                @click="resetChevronData(), blockChevronDDM(messageObj)"
+                @mouseenter="activeMsg = messageObj"
+                @mouseleave="activeMsg = null; toggleClick = true"
+                @click="toggleClick === true ? clickedMsg = activeMsg : clickedMsg = null; toggleClick = !toggleClick"
                 >
                 <i
                   class="fa-solid fa-chevron-down"
-                  :class="messageObj.chevronState === true ? 'd-block' : 'd-none'"
+                  :class="activeMsg === messageObj ? 'd-block' : 'd-none'"
                   >
                 </i>
-                <ul class="drop-down-menu" :class="messageObj.ddmState === true ? 'd-block' : 'd-none'">
+                <ul class="drop-down-menu" :class="clickedMsg === messageObj ? 'd-block' : 'd-none'">
                   <li>Info messaggio</li>
                   <li @click="deleteMsg(contactIndex, index)">Cancella messaggio</li>
                 </ul>

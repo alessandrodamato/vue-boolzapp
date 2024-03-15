@@ -180,9 +180,9 @@ createApp({
         'Vuoi giocare a calcio con me?'
       ],
       contactToSearch: '',
-      chevronState: false,
-      chevronActive: false,
-      ddmState: false
+      activeMsg: null,
+      clickedMsg: null,
+      toggleClick: true
     }
   },
 
@@ -213,9 +213,7 @@ createApp({
     },
 
     deleteMsg(contactI, msgIndex){
-      // if (this.contacts[contactI].messages.length > 1) {
         this.contacts[contactI].messages.splice(msgIndex, 1);
-      // }
     },
 
     getBotRandomResponse(){
@@ -255,27 +253,6 @@ createApp({
       } else {
         return arr[arr.length - 1]
       }
-    },
-
-    openChevron(messageObj){
-      messageObj.chevronState = true
-      console.log(messageObj);
-    },
-
-    closeChevron(messageObj){
-      if (!this.chevronActive) {
-        messageObj.chevronState = false
-        console.log(messageObj);
-      }
-    },
-
-    blockChevronDDM(messageObj){
-      this.chevronActive = !this.chevronActive
-      messageObj.ddmState = this.chevronActive
-    },
-
-    resetChevronData(){
-      
     }
     
   },
